@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1436123192 source:c:\users\gustavo\documents\ifsc\arquitetura de computadores\projeto hugo\cliente\servidor.c
+	<stdio.h>
+	<winsock2.h>
+
+1436123192 source:c:\users\gustavo\documents\ifsc\arquitetura de computadores\projeto hugo\servidor\servidor.c
+	<stdio.h>
+	<winsock2.h>
+
