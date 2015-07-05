@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1436123265 source:c:\users\gustavo\documents\ifsc\arquitetura de computadores\projeto hugo\client-temp\client-temp.c
+	<stdio.h>
+	<stdlib.h>
+	<winsock2.h>
+	"port.h"
+
+1435590758 c:\users\gustavo\documents\ifsc\arquitetura de computadores\projeto hugo\client-temp\port.h
+
