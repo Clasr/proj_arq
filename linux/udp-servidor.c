@@ -115,6 +115,7 @@ int main(int argc, char **argv)
 	/////////////////////////////////////////////////////////////////////////////
 
 	//fazer leitura da temperatura antes do loop para gravar temp_min e temperatura_max
+	write(serial, "*", 1);
 	res = read(serial,buf,BUFSIZE);
 	buf[res-1]=0;
 	temperatura_min = atoi(buf);
@@ -136,6 +137,7 @@ int main(int argc, char **argv)
 
 
 			//ler temperatura via serial///////////////////////////////////////////
+			write(serial, "*", 1);
 			res = read(serial,buf,BUFSIZE);
 			buf[res-1]=0;	/* Marca o final da string (para uso com o printf) */
 			//printf("%s", buf);
@@ -146,11 +148,13 @@ int main(int argc, char **argv)
 			if(temperatura_min > temperatura) {
 				temperatura_min = temperatura;
 			}
+			printf("temp = %d", temperatura);
 
 		//enviar temperatura////////////////////////////////////////////////////////
 		switch (comand) {
 			case 0: //responder temperatura atual
 				printf("Sending temperatura atual %d\n", SERVICE_PORT);
+				sprintf(buf, "%d", temperatura);
 				if (sendto(fd, buf, sizeof(buf), 0, (struct sockaddr *)&remaddr, slen)==-1)
 				perror("sendto");
 				break;
