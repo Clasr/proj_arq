@@ -54,8 +54,8 @@ int main(int argc, char **argv)
 	printf("\nDigite o nome da porta USB: \n");
 	scanf("%s", USB);
 	//configuração porta serial//////////////////////////////////
-	serial = open("USB", O_RDWR | O_NOCTTY );
-	if (serial <0) {perror("USB"); exit(-1); }
+	serial = open(USB, O_RDWR | O_NOCTTY );
+	if (serial <0) {perror(USB); exit(-1); }
 
 	tcgetattr(serial,&oldtio); /* Armazena a configuracao anterior */
 
@@ -138,7 +138,7 @@ int main(int argc, char **argv)
 			//ler temperatura via serial///////////////////////////////////////////
 			res = read(serial,buf,BUFSIZE);
 			buf[res-1]=0;	/* Marca o final da string (para uso com o printf) */
-			printf("%s", buf);
+			//printf("%s", buf);
 			temperatura = atoi(buf);
 			if(temperatura_max < temperatura) {
 				temperatura_max = temperatura;
@@ -150,18 +150,18 @@ int main(int argc, char **argv)
 		//enviar temperatura////////////////////////////////////////////////////////
 		switch (comand) {
 			case 0: //responder temperatura atual
-				printf("Sending temperatura to 123 port %d\n", SERVICE_PORT);
+				printf("Sending temperatura atual %d\n", SERVICE_PORT);
 				if (sendto(fd, buf, sizeof(buf), 0, (struct sockaddr *)&remaddr, slen)==-1)
 				perror("sendto");
 				break;
 			case 1: //responder temperatura maxima
-				printf("Sending temperatura to 123 port %d\n", SERVICE_PORT);
+				printf("Sending temperatura maxima %d\n", SERVICE_PORT);
 				sprintf(buf, "%d", temperatura_max);
 				if (sendto(fd, buf, sizeof(buf), 0, (struct sockaddr *)&remaddr, slen)==-1)
 				perror("sendto");
 				break;
 			case 2: //responder temperatura minima
-				printf("Sending temperatura to 123 port %d\n", SERVICE_PORT);
+				printf("Sending temperatura minima %d\n", SERVICE_PORT);
 				sprintf(buf, "%d", temperatura_min);
 				if (sendto(fd, buf, sizeof(buf), 0, (struct sockaddr *)&remaddr, slen)==-1)
 				perror("sendto");
