@@ -79,7 +79,7 @@ int main(void)
 				printf("received %d bytes\n", recvlen);
 				if (recvlen > 0) {
 					buf[recvlen] = 0;
-					printf("Temperatura: \"%cC\"\n", buf[0]);
+					printf("Temperatura: \"%sC\"\n", buf);
 				}
 				break;
 
@@ -96,7 +96,7 @@ int main(void)
 				printf("received %d bytes\n", recvlen);
 				if (recvlen > 0) {
 					buf[recvlen] = 0;
-					printf("Temperatura: \"%cC\"\n", buf[0]);
+					printf("Temperatura: \"%sC\"\n", buf);
 				}
 				break;
 			case 2:
@@ -111,7 +111,7 @@ int main(void)
 				printf("received %d bytes\n", recvlen);
 				if (recvlen > 0) {
 					buf[recvlen] = 0;
-					printf("Temperatura: \"%cC\"\n", buf[0]);
+					printf("Temperatura: \"%sC\"\n", buf);
 				}
 				break;
 

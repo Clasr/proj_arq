@@ -5,15 +5,15 @@ CFLAGS = -g
 
 all: udp-cliente udp-servidor
 
-udp-send: udp-cliente.o 
+udp-cliente: udp-cliente.o 
 	$(CC) -o udp-cliente udp-cliente.o $(LIBS)
 
-udp-recv: udp-servidor.o 
+udp-servidor: udp-servidor.o 
 	$(CC) -o udp-servidor udp-servidor.o $(LIBS)
 
-udp-send.o: udp-cliente.c port.h
+udp-cliente.o: udp-cliente.c port.h
 
-udp-recv.o: udp-cliente.c port.h
+udp-servidor.o: udp-cliente.c port.h
 
 clean:
 	rm -f udp-cliente udp-servidor udp-cliente.o udp-servidor.o 
